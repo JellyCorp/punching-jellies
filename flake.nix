@@ -30,7 +30,14 @@
               modules = [
                 {
                   # https://devenv.sh/reference/options/
-                  packages = [ pkgs.hello ];
+                  packages = with pkgs; [
+                    (python3.withPackages (ps: (with ps; [
+                      black
+                      pygame
+                      numpy
+                      matplotlib
+                    ])))
+                  ];
 
                   enterShell = ''
                     hello
