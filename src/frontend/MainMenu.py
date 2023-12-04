@@ -1,8 +1,8 @@
 import pygame
 
-from windows.Window import Window
-from sprites.Button import Button
-from sprites.Text import Text
+from .jelly_ui.windows.Window import Window
+from .jelly_ui.sprites.Button import Button
+from .jelly_ui.sprites.Text import Text
 
 
 class MainMenu(Window):
@@ -39,7 +39,7 @@ class MainMenu(Window):
         pygame.mixer.music.play(-1)
 
     def next_window(self):
-        from windows.Battlefield import Battlefield
+        from .Battlefield import Battlefield
         self.game.window = Battlefield(self.game)
 
     def previous_window(self):

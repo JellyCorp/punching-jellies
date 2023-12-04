@@ -1,9 +1,9 @@
 import pygame
 
-from windows.Window import Window
-from sprites.Button import Button
-from sprites.Text import Text
-from sprites.Entity import Entity
+from .jelly_ui.windows.Window import Window
+from .jelly_ui.sprites.Button import Button
+from .jelly_ui.sprites.Text import Text
+from .jelly_ui.sprites.Entity import Entity
 
 
 class Battlefield(Window):

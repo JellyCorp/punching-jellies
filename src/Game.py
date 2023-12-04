@@ -2,7 +2,7 @@ import pygame
 import sys
 import os 
 
-from windows.MainMenu import MainMenu
+from frontend.MainMenu import MainMenu
 
 class Game:
     def __init__(self):
