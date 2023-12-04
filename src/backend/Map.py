@@ -16,6 +16,12 @@ class Map:
             self._t0 = perf_counter()
         return self._t0
     
+    def is_valid(self, pos, player_size):
+        return (
+            0 <= pos.y <= self.grid_dim[1]-player_size[1]
+        )
+
+    
 
 if __name__ == '__main__':
     myMap = Map()
