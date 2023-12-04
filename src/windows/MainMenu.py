@@ -39,7 +39,8 @@ class MainMenu(Window):
         pygame.mixer.music.play(-1)
 
     def next_window(self):
-        pass
+        from windows.Battlefield import Battlefield
+        self.game.window = Battlefield(self.game)
 
     def previous_window(self):
         pass

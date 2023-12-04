@@ -4,7 +4,7 @@ import os
 
 from windows.MainMenu import MainMenu
 
-class Main:
+class Game:
     def __init__(self):
         # SETTINGS
         self.fps = 60
@@ -59,4 +59,4 @@ if __name__ == "__main__":
     # WORKING DIR
     WORKING_DIRECTORY = os.path.abspath(os.path.dirname(sys.argv[0]))
     os.chdir(WORKING_DIRECTORY)
-    Main()
+    Game()
