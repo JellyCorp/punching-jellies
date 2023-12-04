@@ -7,6 +7,7 @@ class Window(ABC):
         self.game = game
         self.texts = pygame.sprite.Group()
         self.buttons = pygame.sprite.Group()
+        self.entities = pygame.sprite.Group()
         self.background = None
         self.background_color = (0, 0, 0)
 
@@ -35,6 +36,7 @@ class Window(ABC):
         # groups
         self.buttons.draw(self.game.screen)
         self.texts.draw(self.game.screen)
+        self.entities.draw(self.game.screen)
 
         return cursor
 
