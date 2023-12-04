@@ -22,9 +22,11 @@ class MainMenu(Window):
 
         # BUTTONS
         self.button_next_window = Button(
-            (0, 0),
+            ((600)//2, (600)//2),
             self.next_window,
             None,
+            background_color=(255,255,255),
+            rect_size=(100,50)
         )
 
         # ADDING SPRITES TO INITIAL GROUPS
