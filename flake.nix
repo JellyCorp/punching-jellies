@@ -31,6 +31,8 @@
                 {
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
+                    hello
+                    pre-commit
                     (python3.withPackages (ps: (with ps; [
                       black
                       pygame
@@ -40,7 +42,7 @@
                   ];
 
                   enterShell = ''
-                    hello
+                    hello Jellies
                   '';
                 }
               ];
