@@ -12,8 +12,8 @@ class Button(pygame.sprite.Sprite):
         disable=False,
         wider_touch=False,
         scale: float = 1.0,
-        background_color = (255, 255, 255),
-        rect_size = (0, 0),
+        background_color=(255, 255, 255),
+        rect_size=(0, 0),
         **kwargs
     ):
         super().__init__()
@@ -32,8 +32,9 @@ class Button(pygame.sprite.Sprite):
         self.default_image = (
             None
             if image_path is None
-            else 
-            pygame.transform.scale_by(pygame.image.load(image_path), (self.scale, self.scale))
+            else pygame.transform.scale_by(
+                pygame.image.load(image_path), (self.scale, self.scale)
+            )
         )
         self.image_hover = (
             None
@@ -67,14 +68,19 @@ class Button(pygame.sprite.Sprite):
         hover = self.hover(pos)
         if self.selected or hover and self.image_hover is not None:
             self.image = self.image_hover
-        elif not self.selected and self.image != self.default_image and self.default_image is not None:
+        elif (
+            not self.selected
+            and self.image != self.default_image
+            and self.default_image is not None
+        ):
             self.image = self.default_image
 
         return hover
 
     def handle_event(self, event):
         if (
-            not self.disable and self.callback is not None
+            not self.disable
+            and self.callback is not None
             and event.type == pygame.MOUSEBUTTONDOWN
             and (self.rect.collidepoint(event.pos) or self.wider_touch)
         ):

@@ -8,17 +8,13 @@ from sprites.Text import Text
 class Battlefield(Window):
     def __init__(self, game):
         super().__init__(game)
-        self.background_color = (255,255,255)
+        self.background_color = (255, 255, 255)
 
         # TEXTS
 
         # BUTTONS
         self.ground = Button(
-            (0, 400),
-            None,
-            None,
-            background_color=(0,0,0),
-            rect_size=(700,10)
+            (0, 400), None, None, background_color=(0, 0, 0), rect_size=(700, 10)
         )
 
         # ADDING SPRITES TO INITIAL GROUPS
