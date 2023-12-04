@@ -34,7 +34,8 @@ class Battlefield(Window):
             images_path = "../assets/img/miscellaneous/characters_models/character_green.png",
             scale = 2.0
         )
-
+        self.player2.flip()
+        
         # ADDING SPRITES TO INITIAL GROUPS
         self.buttons.add([self.ground])
         self.texts.add([])

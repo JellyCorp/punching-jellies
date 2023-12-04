@@ -7,7 +7,6 @@ class Entity(pygame.sprite.Sprite):
         # IMAGES
         self.scale = scale
         images_path = images_path if isinstance(images_path, list) else [images_path]
-        print(images_path)
         self.images = [
             pygame.transform.scale_by(
                 pygame.image.load(image_path), (self.scale, self.scale)
@@ -20,8 +19,11 @@ class Entity(pygame.sprite.Sprite):
         self.image = self.images[self.current_image_index]
         self.rect = self.image.get_rect(topleft=topleft)
 
-    def update(self, pos):
+    def update(self):
         if self.update_index == 0:
             print(self.update_index)
         else:
             self.update_index = self.update_index % 60
+
+    def flip(self):
+        self.image = pygame.transform.flip(self.image, True, False)

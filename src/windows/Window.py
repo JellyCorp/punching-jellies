@@ -27,6 +27,9 @@ class Window(ABC):
             if button.update(pos):
                 cursor = pygame.SYSTEM_CURSOR_HAND
 
+        for entity in self.entities:
+            entity.update()
+
         # background
         self.game.screen.fill(self.background_color)
         if self.background is not None:
