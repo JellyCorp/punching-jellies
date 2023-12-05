@@ -2,12 +2,18 @@ import pygame
 import sys
 import os 
 
-from windows.MainMenu import MainMenu
+from frontend.MainMenu import MainMenu
 
 class Game:
     def __init__(self):
         # SETTINGS
         self.fps = 60
+        self.start_positions = [
+            [(368, 20)],
+            [(368, 20), (368, 648)],
+            [(368, 20), (368, 334), (368, 648)],
+            [(368, 20), (368, 175), (368, 533), (368, 648)]
+        ]
 
         # PYGAME
         pygame.init()
