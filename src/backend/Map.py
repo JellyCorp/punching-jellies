@@ -1,11 +1,14 @@
 from time import perf_counter, sleep
 
+
 class Map:
     def __init__(self,
                 grid_dim = (500,700),
+                max_t = 5
                 ):
         self.grid_dim = grid_dim
         self._t0 = None
+        self.max_t = max_t
 
     def get_time(self):
         return perf_counter() - self.t0
@@ -18,10 +21,8 @@ class Map:
     
     def is_valid(self, pos, player_size):
         return (
-            0 <= pos.y <= self.grid_dim[1]-player_size[1]
+            0 <= pos.x <= self.grid_dim[1]-player_size[1]
         )
-
-    
 
 if __name__ == '__main__':
     myMap = Map()
