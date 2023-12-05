@@ -1,4 +1,5 @@
 from enum import Enum
+from time import sleep
 
 from .Position import Position
 from .Map import Map
@@ -33,7 +34,7 @@ class Player:
             (self.map.get_time(), Actions.move_right, start_position, self.position)
         )
 
-    def move_left(self, dist=10):
+    def move_left(self, dist=20):
         start_position = self.position
         self._move((0, -1), dist)
         self.history.append(
@@ -44,6 +45,7 @@ class Player:
         for _ in range(dist):
             if self.map.is_valid(self.position + Position(vect), (32, 32)):
                 self.position += Position(vect)
+            sleep(1 / 60)
 
     def update(self):
         print(self.next_action)

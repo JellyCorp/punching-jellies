@@ -5,14 +5,17 @@ import random
 from .jelly_ui.Window import Window
 from .jelly_ui.sprites.Button import Button
 from .jelly_ui.sprites.Text import Text
-from .jelly_ui.sprites.Entity import Entity
+from .PlayerEntity import PlayerEntity
+from .GroundEntity import GroundEntity
 from backend.Main import Main
 
 
 class Battlefield(Window):
     def __init__(self, game):
         super().__init__(game)
-        self.background_color = (255, 255, 255)
+        #self.background_color = (255, 255, 255)
+        self.background = "../assets/img/miscellaneous/background_models/background_grass.png"
+        
 
         # INIT BACKEND
         self.game.backend = Main(
@@ -25,11 +28,6 @@ class Battlefield(Window):
 
         # TEXTS
 
-        # BUTTONS
-        self.ground = Button(
-            (0, 400), None, None, background_color=(0, 0, 0), rect_size=(700, 100)
-        )
-
         # ENTITIES
         path = "../assets/img/miscellaneous/characters_models"
         skins = [
@@ -39,22 +37,27 @@ class Battlefield(Window):
         ]
         random.shuffle(skins)
         players_entities = [
-            Entity(
+            PlayerEntity(
                 topleft=(
                     self.game.backend.players[i].position.x,
                     self.game.backend.players[i].position.y,
                 ),
                 images_path=skins.pop(),
+                player=self.game.backend.players[i],
                 scale=2.0,
             )
             for i in range(self.game.nb_players)
         ]
         players_entities[1].flip()  # TODO add players/entities direction
 
+        self.ground = GroundEntity(
+            (0, 400), images_path="../assets/img/miscellaneous/grounds_models/ground_grass.png"
+        )
+
         # ADDING SPRITES TO INITIAL GROUPS
-        self.buttons.add([self.ground])
+        self.buttons.add([])
         self.texts.add([])
-        self.entities.add(players_entities)
+        self.entities.add([players_entities, self.ground])
 
         # MUSIC
         pygame.mixer.music.set_volume(0.05)

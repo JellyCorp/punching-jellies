@@ -29,7 +29,7 @@ class Main(threading.Thread):
                 player.next_action = choice(list(Actions))
             for player in self.players:
                 player.update()
-            sleep(1)
+            # sleep(25*1e-2)
 
 
 if __name__ == "__main__":

@@ -20,7 +20,8 @@ class Entity(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=topleft)
 
     def update(self):
-        pass
+        self.rect = self.image.get_rect(topleft=self.topleft)
+        # TODO update animation
 
     def flip(self):
         self.image = pygame.transform.flip(self.image, True, False)
