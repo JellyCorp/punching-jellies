@@ -23,9 +23,7 @@ class Game:
         try:
             assert screen_width >= SCREEN["width"] and screen_height >= SCREEN["height"]
         except:
-            raise Exception(
-                f"Your screen dimensions ({screen_width}x{screen_height}) are too small ({SCREEN['width']}x{SCREEN['height']} is required)"
-            )
+            raise Exception(f"Your screen dimensions ({screen_width}x{screen_height}) are too small ({SCREEN['width']}x{SCREEN['height']} is required)")
         os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (
             (screen_width - SCREEN["width"]) // 2,
             (screen_height - SCREEN["height"]) // 2 - 40,
