@@ -1,18 +1,20 @@
 from random import choice
 from time import sleep
+import threading
 
-from Map import Map
-from Player import Player, Actions
-    
-class Main:
+from .Map import Map
+from .Player import Player, Actions
 
-    def __init__(self,
-                start_positions,
-                grid_dim = (500,700),
-                ):
-        self.map = Map(grid_dim)
+
+class Main(threading.Thread):
+    def __init__(self, start_positions, grid_dim, max_t):
+        super().__init__()
+
+        self.map = Map(grid_dim=grid_dim, max_t=max_t)
         self.nb_players = len(start_positions)
-        self.players = [Player(start_positions[i], self.map) for i in range(self.nb_players)]
+        self.players = [
+            Player(start_positions[i], self.map) for i in range(self.nb_players)
+        ]
 
     def is_over(self):
         count = self.nb_players
@@ -28,6 +30,7 @@ class Main:
             for player in self.players:
                 player.update()
             sleep(1)
+
 
 if __name__ == "__main__":
     main = Main(start_positions=[(368, 20), (368, 648)])

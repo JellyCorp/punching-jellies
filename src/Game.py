@@ -9,11 +9,11 @@ class Game:
     def __init__(self):
         # SETTINGS
         self.fps = 60
-        self.start_positions = [
+        self.possible_start_positions = [
             [(368, 20)],
             [(368, 20), (368, 648)],
             [(368, 20), (368, 334), (368, 648)],
-            [(368, 20), (368, 175), (368, 533), (368, 648)]
+            [(368, 20), (368, 175), (368, 533), (368, 648)],
         ]
 
         # PYGAME
@@ -22,7 +22,8 @@ class Game:
         self.clock = pygame.time.Clock()
 
         # SETUP SCREEN
-        SCREEN = {"width": 700, "height": 512}
+        SCREEN = {"width": 700, "height": 500}
+        self.grid_dim = (SCREEN["height"], SCREEN["width"])
         screen_info = pygame.display.Info()
         screen_width = screen_info.current_w
         screen_height = screen_info.current_h
