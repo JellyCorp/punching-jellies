@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     systems.url = "github:nix-systems/default";
     devenv.url = "github:cachix/devenv";
   };
@@ -31,6 +31,7 @@
                 {
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
+                    pre-commit
                     (python3.withPackages (ps: (with ps; [
                       black
                       pygame
@@ -40,7 +41,7 @@
                   ];
 
                   enterShell = ''
-                    hello
+                    black .
                   '';
                 }
               ];

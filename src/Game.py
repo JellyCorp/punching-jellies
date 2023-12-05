@@ -1,8 +1,9 @@
 import pygame
 import sys
-import os 
+import os
 
 from frontend.MainMenu import MainMenu
+
 
 class Game:
     def __init__(self):
@@ -21,18 +22,20 @@ class Game:
         self.clock = pygame.time.Clock()
 
         # SETUP SCREEN
-        SCREEN = {"width": 700, "height": 500}
+        SCREEN = {"width": 700, "height": 512}
         screen_info = pygame.display.Info()
         screen_width = screen_info.current_w
         screen_height = screen_info.current_h
         try:
             assert screen_width >= SCREEN["width"] and screen_height >= SCREEN["height"]
-        except: 
-            raise Exception(f"Your screen dimensions ({screen_width}x{screen_height}) are too small ({SCREEN['width']}x{SCREEN['height']} is required)")
+        except:
+            raise Exception(
+                f"Your screen dimensions ({screen_width}x{screen_height}) are too small ({SCREEN['width']}x{SCREEN['height']} is required)"
+            )
         os.environ["SDL_VIDEO_WINDOW_POS"] = "%d,%d" % (
             (screen_width - SCREEN["width"]) // 2,
             (screen_height - SCREEN["height"]) // 2 - 40,
-        ) 
+        )
 
         # RUN SCREEN
         self.screen = pygame.display.set_mode((SCREEN["width"], SCREEN["height"]))
