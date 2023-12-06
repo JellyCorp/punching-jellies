@@ -13,9 +13,10 @@ from backend.Main import Main
 class Battlefield(Window):
     def __init__(self, game):
         super().__init__(game)
-        #self.background_color = (255, 255, 255)
-        self.background = "../assets/img/miscellaneous/background_models/background_grass.png"
-        
+        # self.background_color = (255, 255, 255)
+        self.background = (
+            "../assets/img/miscellaneous/background_models/background_grass.png"
+        )
 
         # INIT BACKEND
         self.game.backend = Main(
@@ -51,7 +52,8 @@ class Battlefield(Window):
         players_entities[1].flip()  # TODO add players/entities direction
 
         self.ground = GroundEntity(
-            (0, 400), images_path="../assets/img/miscellaneous/grounds_models/ground_grass.png"
+            (0, 400),
+            images_path="../assets/img/miscellaneous/grounds_models/ground_grass.png",
         )
 
         # ADDING SPRITES TO INITIAL GROUPS

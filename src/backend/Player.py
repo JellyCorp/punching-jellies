@@ -1,8 +1,8 @@
 from enum import Enum
 from time import sleep
 
-from Position import Position
-from Map import Map
+from .Position import Position
+from .Map import Map
 
 
 class Actions(Enum):
