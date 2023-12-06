@@ -1,8 +1,8 @@
 from enum import Enum
 from time import sleep
 
-from .Position import Position
-from .Map import Map
+from Position import Position
+from Map import Map
 
 
 class Actions(Enum):
@@ -21,8 +21,9 @@ class Player:
         self.position = Position(position)
         self.history = []
         self.map = map
+        self.next_action = Actions.none
+        self.size = (32, 32)
         Player.count += 1
-        self.next_action = None
 
     def __repr__(self) -> str:
         return f"{self.id} -> {self.position}\n"
@@ -41,22 +42,23 @@ class Player:
             (self.map.get_time(), Actions.move_left, start_position, self.position)
         )
 
-    def _move(self, vect, dist):
+    def _move(self, vect: (int, int), dist):
         for _ in range(dist):
-            if self.map.is_valid(self.position + Position(vect), (32, 32)):
+            if self.map.is_valid(self.position + Position(vect), self.size):
                 self.position += Position(vect)
             sleep(1 / 60)
 
     def update(self):
-        print(self.next_action)
+        assert isinstance(self.next_action, Actions)
         match self.next_action:
             case Actions.move_right:
                 self.move_right()
             case Actions.move_left:
                 self.move_left()
-        self.next_action = None
+        self.next_action = Actions.none
 
 
 if __name__ == "__main__":
-    p = Player((5, 20), Map())
+    p = Player((5, 20), Map((100, 100), 5))
+    p.update()
     p.move_left()

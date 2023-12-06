@@ -34,5 +34,5 @@ class Main(threading.Thread):
 
 if __name__ == "__main__":
     main = Main(start_positions=[(368, 20), (368, 648)])
-    main.run()
+    main.start()
     print(main.players[0].history)
