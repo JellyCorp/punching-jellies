@@ -1,7 +1,9 @@
 # punching-jellies
 AI-based Jelly-fighting cubes game.
 
-## Logic Sequence Diagram
+## BACKEND
+
+### Logic Sequence Diagram
 
 ```mermaid
     sequenceDiagram
@@ -41,7 +43,7 @@ AI-based Jelly-fighting cubes game.
         end
 ```
 
-## Functional Sequence Diagram
+### Functional Sequence Diagram
 
 ```mermaid
     sequenceDiagram
@@ -64,7 +66,7 @@ AI-based Jelly-fighting cubes game.
                 Main->>Player: for player in self.players player.next_action = choice(list(Actions))
                 alt Action: move_right
                     Player->>Player: self.move_right()
-                    Player-->>Map: self.map.is_valid((0,1), (self.size,self.size)) 
+                    Player-->>Map: self.map.is_valid((0,1), (self.size,self.size))
                     Map-->>Player: (returns T/F)
                     alt if Map returns T
                         Player-->>Player: self.move((0,1))
