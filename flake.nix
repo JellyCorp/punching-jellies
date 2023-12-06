@@ -41,6 +41,7 @@
                   ];
 
                   enterShell = ''
+                    pre-commit install
                     black .
                   '';
                 }
