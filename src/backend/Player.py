@@ -14,7 +14,7 @@ class Actions(Enum):
 class Player:
     count = 0
 
-    def __init__(self, position: Position, map):
+    def __init__(self, position: Position, map: Map):
         self.id = Player.count
         self.hit_points = 100
         self.stamina = 10
