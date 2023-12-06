@@ -1,6 +1,8 @@
 # punching-jellies
 AI-based Jelly-fighting cubes game.
 
+## Logic Sequence Diagram
+
 ```mermaid
     sequenceDiagram
         participant Main
@@ -23,11 +25,57 @@ AI-based Jelly-fighting cubes game.
                 alt Action: move_right
                     Player->>Player: Player try to move right
                     Player-->>Map: Player ask the map if the move is physically possible
-                    Player-->>Player: Player process the action if possible
+                    Map-->>Player: Map compute the possibility of the move using player's position and rect
+                    alt Move right is possible
+                        Player-->>Player: Player process the action
+                    end
                 else Action: move_left
                     Player->>Player: Player try to move right
                     Player-->>Map: Player ask the map if the move is physically possible
-                    Player-->>Player: Player process the action if possible
+                    Map-->>Player: Map compute the possibility of the move using player's position and rect
+                    alt Move left is possible
+                        Player-->>Player: Player process the action
+                    end
+                end
+            end
+        end
+```
+
+## Functional Sequence Diagram
+
+```mermaid
+    sequenceDiagram
+        participant Main
+        participant Map
+        participant Player
+
+        Main->>Map: self.map = Map(start_positions)
+        loop Players Initialization
+            Main->>Player: self.players = [Player(start_positions[i], self.map) for i in range(self.nb_players)]
+        end
+
+        Main->>Main: self.run()
+
+        loop Game Loop
+            Main->>Main: is_over() (return T/F)
+            alt T
+                Main-->>Main: Stop the Game Loop
+            else F
+                Main->>Player: for player in self.players player.next_action = choice(list(Actions))
+                alt Action: move_right
+                    Player->>Player: self.move_right()
+                    Player-->>Map: self.map.is_valid((0,1), (self.size,self.size)) 
+                    Map-->>Player: (returns T/F)
+                    alt if Map returns T
+                        Player-->>Player: self.move((0,1))
+                    end
+                else Action: move_left
+                    Player->>Player: self.move_left()
+                    Player-->>Map: self.map.is_valid((0,-1), (self.size,self.size))
+                    Map-->>Player: (returns T/F)
+                    alt if Map returns T
+                        Player-->>Player: self.move((0,-1))
+                    end
                 end
             end
         end
