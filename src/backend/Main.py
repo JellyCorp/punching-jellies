@@ -13,7 +13,7 @@ class Main(threading.Thread):
         self.map = Map(grid_dim=grid_dim, max_t=max_t)
         self.nb_players = len(start_positions)
         self.players = [
-            Player(start_positions[i], self.map) for i in range(self.nb_players)
+            Player(start_positions[i], self.map, ((i % 2) == 0)) for i in range(self.nb_players)
         ]
 
     def is_over(self):

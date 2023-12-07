@@ -14,7 +14,7 @@ class Actions(Enum):
 class Player:
     count = 0
 
-    def __init__(self, position: Position, map: Map):
+    def __init__(self, position: Position, map: Map, look_right=True):
         self.id = Player.count
         self.hit_points = 100
         self.stamina = 10
@@ -23,6 +23,7 @@ class Player:
         self.map = map
         self.next_action = Actions.none
         self.size = (32, 32)
+        self.look_right = look_right
         Player.count += 1
 
     def __repr__(self) -> str:
@@ -45,8 +46,12 @@ class Player:
     def _move(self, vect: (int, int), dist):
         for _ in range(dist):
             if self.map.is_valid(self.position + Position(vect), self.size):
+                if (vect == (0,1)) and not self.look_right:
+                    self.look_right = True
+                elif (vect == (0,-1)) and self.look_right:
+                    self.look_right = False
                 self.position += Position(vect)
-            sleep(1 / 60)
+            sleep(1/60 )
 
     def update(self):
         assert isinstance(self.next_action, Actions)
