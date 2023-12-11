@@ -1,0 +1,108 @@
+classDiagram
+  class Actions {
+    name
+  }
+  class Battlefield {
+    background_color : tuple
+    ground
+    player1
+    player2
+    next_window()*
+    previous_window()*
+  }
+  class Button {
+    callback : NoneType
+    default_image : NoneType
+    disable : bool
+    image : NoneType
+    image_hover : NoneType
+    kwargs : dict
+    rect
+    scale : float
+    selected : bool
+    topleft
+    wider_touch : bool
+    handle_event(event)
+    hover(mouse_pos)
+    set_default_image(image_path)
+    set_hover_image(image_path)
+    update(pos)
+  }
+  class Entity {
+    current_image_index : int
+    image
+    images
+    rect
+    scale : float
+    topleft
+    update_index : int
+    flip()
+    update()
+  }
+  class Game {
+    clock
+    fps : int
+    screen
+    start_positions : list
+    window
+  }
+  class Main {
+    map
+    nb_players
+    players
+    is_over()
+    run()
+  }
+  class MainMenu {
+    button_next_window
+    font : Font
+    main_title_text
+    next_window()
+    previous_window()*
+  }
+  class Map {
+    grid_dim : tuple
+    max_t : int
+    t0
+    get_time()
+    is_valid(pos, player_size)
+  }
+  class Player {
+    history : list
+    hit_points : int
+    id
+    map
+    next_action : NoneType
+    pos
+    stamina : int
+    move_left(dist)
+    move_right(dist)
+    update()
+  }
+  class Position {
+    x
+    y
+  }
+  class Text {
+    image
+    rect
+  }
+  class Window {
+    background : NoneType
+    background_color : tuple
+    buttons
+    entities
+    game
+    texts
+    handle_event(event)
+    next_window()*
+    previous_window()*
+    update(pos)
+  }
+  Battlefield --|> Window
+  MainMenu --|> Window
+  Button --* Battlefield : ground
+  Button --* MainMenu : button_next_window
+  Entity --* Battlefield : player1
+  Entity --* Battlefield : player2
+  Text --* MainMenu : main_title_text

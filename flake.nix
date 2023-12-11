@@ -32,8 +32,10 @@
                   # https://devenv.sh/reference/options/
                   packages = with pkgs; [
                     pre-commit
+                    graphviz
                     (python3.withPackages (ps: (with ps; [
                       black
+                      pylint
                       pygame
                       numpy
                       matplotlib

@@ -82,3 +82,8 @@ AI-based Jelly-fighting cubes game.
             end
         end
 ```
+
+### Projects UML
+<p align="center">
+    <img src="imgs/packages.jpg" alt="Auto-generated projects UML"/>
+</p>
