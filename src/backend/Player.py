@@ -44,9 +44,6 @@ class Player:
         thoughts = self.brain(
             [self.position.x, self.size[1], self.map.checkpoints[self.checkpoint_step]]
         )
-        print(
-            f"{self.id} - {thoughts} - {self.checkpoint_step} - {abs(self.position.x - self.map.checkpoints[self.checkpoint_step])}"
-        )
         self.next_action = list(Actions)[thoughts.index(max(thoughts))]
 
     def move_right(self, dist=1):
