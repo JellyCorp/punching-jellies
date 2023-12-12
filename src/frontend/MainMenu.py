@@ -46,7 +46,7 @@ class MainMenu(Window):
         pygame.mixer.music.play(-1)
 
         # NB PLAYERS SELECTION TODO add buttons to select
-        self.game.nb_players = 2
+        self.game.nb_players = 4
 
     def next_window(self):
         from .Battlefield import Battlefield

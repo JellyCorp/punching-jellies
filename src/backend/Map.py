@@ -7,6 +7,8 @@ class Map:
         self._t0 = None
         self.max_t = max_t
 
+        self.checkpoints = [600, 100, 500, 10, 650]
+
     def get_time(self):
         return perf_counter() - self.t0
 
