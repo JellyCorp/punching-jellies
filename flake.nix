@@ -37,6 +37,10 @@
                       pygame
                       numpy
                       matplotlib
+                      jupyter
+                      ipython
+                      ipykernel
+                      pip
                     ])))
                   ];
 
