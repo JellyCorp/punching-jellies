@@ -1,6 +1,6 @@
 import random
 
-from Neuron import Neuron
+from .Neuron import Neuron
 import json
 
 
