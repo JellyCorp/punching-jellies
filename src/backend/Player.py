@@ -2,6 +2,7 @@ from enum import Enum
 from time import sleep
 import sys
 import os
+from scipy.special import softmax
 
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -23,7 +24,7 @@ class Player:
 
     def __init__(self, position: Position, map: Map, brain: FullyConnected = None):
         self.brain = (
-            brain if brain is not None else FullyConnected([3, 4, len(Actions)])
+            brain if brain is not None else FullyConnected([2, 4, len(Actions)])
         )
         self.id = Player.count
         self.hit_points = 100
@@ -41,9 +42,19 @@ class Player:
         return f"{self.id} -> {self.position} -> {self.checkpoint_step}\n"
 
     def decide(self):
+        # Pass the input to the model
         thoughts = self.brain(
-            [self.position.x, self.size[1], self.map.checkpoints[self.checkpoint_step]]
+            [
+                self.position.x,
+                #  self.size[1],
+                self.map.checkpoints[self.checkpoint_step],
+            ]
         )
+
+        # Apply softmax to output vector
+        thoughts = list(softmax(thoughts))
+
+        # Choose Action with the highest probability
         self.next_action = list(Actions)[thoughts.index(max(thoughts))]
 
     def move_right(self, dist=1):
