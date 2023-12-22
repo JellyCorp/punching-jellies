@@ -14,7 +14,8 @@ class Neuron:
         else:
             value = self.bias
             for p in self.parents:
-                value += p.weight * p.compute_value()
+                # value += p.weight * p.compute_value()
+                value = max(0, value + p.weight * p.compute_value())  # ReLu
 
         return value
 
