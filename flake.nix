@@ -41,6 +41,7 @@
                       ipython
                       ipykernel
                       pip
+                      scipy
                     ])))
                   ];
 
